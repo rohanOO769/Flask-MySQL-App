@@ -1,0 +1,21 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Portal</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Admin Portal</h1>
+
+    <h2>Current Word: <span id="word"></span></h2>
+
+    <form id="wordForm">
+        <label for="newWord">New Word:</label>
+        <input type="text" id="newWord" name="newWord" required>
+        <button type="submit">Change Word</button>
+    </form>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
