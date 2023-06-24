@@ -63,4 +63,5 @@ pip install requirements.txt
 
 Python, MySQL Workbench
 
-# Hosted site: Admin Portal (flask-postgresql-api-application.onrender.com)
+#Hosting
+Hosted site: https://flask-postgresql-api-application.onrender.com/
