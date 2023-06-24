@@ -1,14 +1,23 @@
 from flask import Flask, jsonify, request, render_template
 import mysql.connector
-
+import psycopg2
 app = Flask(__name__)
+#postgres://test_db_elom_user:1lphhJVAA29asITH5dEFthdDUBZAWS8K@dpg-cibh03d9aq03rjnq6ab0-a.oregon-postgres.render.com/test_db_elom
+# # Connect to the MySQL database
+# db_connection = mysql.connector.connect(
+#     host='localhost',
+#     user='root',
+#     password='rohan',
+#     database='test_db'
+# )
 
-# Connect to the MySQL database
-db_connection = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='rohan',
-    database='test_db'
+# Connect to the PostgreSQL database
+db_connection = psycopg2.connect(
+    host='dpg-cibh03d9aq03rjnq6ab0-a.oregon-postgres.render.com',
+    port='5432',
+    user='test_db_elom_user',
+    password='1lphhJVAA29asITH5dEFthdDUBZAWS8K',
+    database='test_db_elom'
 )
 
 # Create a cursor to interact with the database
@@ -23,16 +32,21 @@ def index():
 
     # If word not found, insert it into the database
     if not result:
-        query = 'INSERT INTO words (value) VALUES ("Test")'
-        cursor.execute(query)
-        db_connection.commit()
+        try:
+            query = "INSERT INTO words (value) VALUES ('Test')"
+            cursor.execute(query)
+            db_connection.commit()
+        except psycopg2.Error as e:
+            print(f"Error inserting value: {e}")
+            db_connection.rollback()
+
 
     return render_template('index.html')
 
 @app.route('/api/test')
 def get_test_word():
     # Retrieve the word from the database
-    query = 'SELECT value FROM words'
+    query = "SELECT value FROM words"
     cursor.execute(query)
     result = cursor.fetchone()
 
