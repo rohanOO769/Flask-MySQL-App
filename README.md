@@ -11,7 +11,7 @@ In this project, I'm demonstrating Flask, PostgreSQL, and Hosting it in Render
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 
-- [License](#By Rohan Amin)
+- [License](#ByRohanAmin)
 
 ## Project Overview
 ![image](https://github.com/rohanOO769/Flask-MySQL-App/assets/104089399/f0709c16-6083-4f8b-9d1b-5ab9e40016f5)
